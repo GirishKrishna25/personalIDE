@@ -13,6 +13,11 @@ export default function LeftPane() {
   }
 
   const StyledRightPane = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    
     padding: 2rem;
     background: #fafafa;
   `;
@@ -99,6 +104,7 @@ export default function LeftPane() {
     display: flex;
     gap: 0.5rem;
     font-size: 1.25rem;
+    padding-right: 1rem;
   `;
 
   return (

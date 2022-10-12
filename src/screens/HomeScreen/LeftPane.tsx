@@ -3,6 +3,12 @@ import styled from "styled-components";
 
 export default function LeftPane() {
   const StyledLeftPane = styled.div`
+    position: fixed;
+    width: 40%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    
     background-color: #221520;
     display: flex;
     justify-content: center;
