@@ -6,8 +6,8 @@ export default function LeftPane() {
     position: fixed;
     width: 40%;
     height: 100vh;
-    top: 0;
     left: 0;
+    top: 0;
     
     background-color: #221520;
     display: flex;
