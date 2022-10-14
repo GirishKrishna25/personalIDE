@@ -109,10 +109,7 @@ const Icons = styled.div`
 
 export default function RightPane() {
   const ModalFeatures = useContext(ModalContext);
-  const isOpen = ModalFeatures?.isOpen;
-  isOpen;
-  isOpen;
-  isOpen;
+  // const isOpen = ModalFeatures?.isOpen;
   const setIsOpen = ModalFeatures?.setIsOpen;
 
   return (
@@ -145,7 +142,7 @@ export default function RightPane() {
               <IoTrashOutline />
               <AiOutlineEdit
                 onClick={() => {
-                  if (isOpenisOpenisOpenisOpen) setIsOpen(true);
+                  if (setIsOpen) setIsOpen(true);
                 }}
               />
             </Icons>
