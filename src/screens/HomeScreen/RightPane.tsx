@@ -109,6 +109,10 @@ const Icons = styled.div`
 
 export default function RightPane() {
   const ModalFeatures = useContext(ModalContext);
+  const isOpen = ModalFeatures?.isOpen;
+  isOpen;
+  isOpen;
+  isOpen;
   const setIsOpen = ModalFeatures?.setIsOpen;
 
   return (
@@ -132,7 +136,7 @@ export default function RightPane() {
 
         <CardContainer>
           <PlaygroundCard>
-            <LogoSmall src="logo-small.png" alt="" />
+            <LogoSmall src="/logo-small.png" alt="" />
             <CardContent>
               <h5>Stack Implementation</h5>
               <p>Language: java</p>
@@ -141,7 +145,7 @@ export default function RightPane() {
               <IoTrashOutline />
               <AiOutlineEdit
                 onClick={() => {
-                  if (setIsOpen) setIsOpen(true);
+                  if (isOpenisOpenisOpenisOpen) setIsOpen(true);
                 }}
               />
             </Icons>

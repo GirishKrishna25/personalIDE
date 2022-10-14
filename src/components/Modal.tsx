@@ -40,6 +40,7 @@ const CloseButton = styled.button`
 
 export default function Modal() {
   const ModalFeatures = useContext(ModalContext);
+  const isOpen = ModalFeatures?.isOpen;
   const setIsOpen = ModalFeatures?.setIsOpen;
 
   return (
@@ -49,7 +50,7 @@ export default function Modal() {
           <h2 className="Heading">Update Folder Name</h2>
           <CloseButton
             onClick={() => {
-              if (setIsOpen) setIsOpen(false);
+              if (isOpen) setIsOpen(false);
             }}
           >
             <GrFormClose />
