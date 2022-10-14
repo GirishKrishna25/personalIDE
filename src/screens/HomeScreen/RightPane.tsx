@@ -108,7 +108,6 @@ const Icons = styled.div`
 `;
 
 export default function RightPane() {
-  //
   const ModalFeatures = useContext(ModalContext);
   const setIsOpen = ModalFeatures?.setIsOpen;
 

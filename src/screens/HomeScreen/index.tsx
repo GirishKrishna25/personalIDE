@@ -1,17 +1,25 @@
-import React from "react";
-import LeftPane from './LeftPane';
-import RightPane from './RightPane';
+import React, { useContext } from "react";
+import LeftPane from "./LeftPane";
+import RightPane from "./RightPane";
 import styled from "styled-components";
+import Modal from "../../components/Modal";
+import { ModalContext } from "../../context/ModalContext";
+
+const HomeScreenContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100vh;
+`;
 
 export default function HomeScreen() {
-  const HomeScreenContainer = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    height: 100vh;
-  `
-  
-  return <HomeScreenContainer>
-    <LeftPane />
-    <RightPane />
-  </HomeScreenContainer>;
+  const ModalFeatures = useContext(ModalContext);
+  const isOpen = ModalFeatures?.isOpen;
+
+  return (
+    <HomeScreenContainer>
+      <LeftPane />
+      <RightPane />
+      {isOpen === true ? <Modal /> : <></>}
+    </HomeScreenContainer>
+  );
 }
