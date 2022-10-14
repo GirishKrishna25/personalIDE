@@ -105,7 +105,6 @@ const Icons = styled.div`
   gap: 0.5rem;
   font-size: 1.25rem;
   padding-right: 1rem;
-  
 `;
 
 export default function RightPane() {
