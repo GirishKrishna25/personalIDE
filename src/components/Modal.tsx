@@ -69,8 +69,8 @@ const EditCardModal = ({
 }) => {
   const PlaygroundFeatures = useContext(PlaygroundContext)!;
   const folders = PlaygroundFeatures.folders;
-  const currentCard =
-    folders[isOpen.identifier.folderId][isOpen.identifier.cardId];
+  const currentFolder = folders[isOpen.identifier.folderId];
+  const currentCard = currentFolder[isOpen.identifier.cardId];
 
   return (
     <>
