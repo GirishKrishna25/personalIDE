@@ -108,9 +108,46 @@ const Icons = styled.div`
 `;
 
 export default function RightPane() {
-  const ModalFeatures = useContext(ModalContext);
-  // const isOpen = ModalFeatures?.isOpen;
-  const setIsOpen = ModalFeatures?.setIsOpen;
+  const makeAvailableGlobally = useContext(ModalContext);
+  const setIsOpen = makeAvailableGlobally?.setIsOpen;
+
+  // rough structure
+  const Folders = {
+    ["1"]: {
+      title: "Folder Title 1",
+      items: {
+        ["item1"]: {
+          title: "stack implementation",
+          language: "java"
+        },
+        ["item2"]: {
+          title: "stack implementation",
+          language: "java"
+        },
+        ["item3"]: {
+          title: "stack implementation",
+          language: "java"
+        }
+      }
+    },
+    ["2"]: {
+      title: "Folder Title 2",
+      items: {
+        ["item4"]: {
+          title: "stack implementation",
+          language: "java"
+        },
+        ["item5"]: {
+          title: "stack implementation",
+          language: "java"
+        },
+        ["item6"]: {
+          title: "stack implementation",
+          language: "java"
+        }
+      }
+    }
+  };
 
   return (
     <StyledRightPane>
@@ -123,56 +160,58 @@ export default function RightPane() {
         </AddButton>
       </Header>
 
-      <Folder>
-        <Header variant="small">
-          <Heading vairant="small">Data structures</Heading>
-          <AddButton>
-            <span>+</span> New ground
-          </AddButton>
-        </Header>
+      {Object.entries(Folders).map(([folderId, folder]) => (
+        <Folder>
+          <Header variant="small">
+            <Heading vairant="small">{folder.title}</Heading>
+            <AddButton>
+              <span>+</span> New ground
+            </AddButton>
+          </Header>
 
-        <CardContainer>
-          <PlaygroundCard>
-            <LogoSmall src="/logo-small.png" alt="" />
-            <CardContent>
-              <h5>Stack Implementation</h5>
-              <p>Language: java</p>
-            </CardContent>
-            <Icons>
-              <IoTrashOutline />
-              <AiOutlineEdit
-                onClick={() => {
-                  if (setIsOpen) setIsOpen(true);
-                }}
-              />
-            </Icons>
-          </PlaygroundCard>
+          <CardContainer>
+            <PlaygroundCard>
+              <LogoSmall src="/logo-small.png" alt="" />
+              <CardContent>
+                <h5>Stack Implementation</h5>
+                <p>Language: java</p>
+              </CardContent>
+              <Icons>
+                <IoTrashOutline />
+                <AiOutlineEdit
+                  onClick={() => {
+                    if (setIsOpen) setIsOpen(true);
+                  }}
+                />
+              </Icons>
+            </PlaygroundCard>
 
-          <PlaygroundCard>
-            <LogoSmall src="logo-small.png" alt="" />
-            <CardContent>
-              <h5>Queue Implementation</h5>
-              <p>Language: java</p>
-            </CardContent>
-            <Icons>
-              <IoTrashOutline />
-              <AiOutlineEdit />
-            </Icons>
-          </PlaygroundCard>
+            <PlaygroundCard>
+              <LogoSmall src="logo-small.png" alt="" />
+              <CardContent>
+                <h5>Queue Implementation</h5>
+                <p>Language: java</p>
+              </CardContent>
+              <Icons>
+                <IoTrashOutline />
+                <AiOutlineEdit />
+              </Icons>
+            </PlaygroundCard>
 
-          <PlaygroundCard>
-            <LogoSmall src="logo-small.png" alt="" />
-            <CardContent>
-              <h5>Heap Implementation</h5>
-              <p>Language: java</p>
-            </CardContent>
-            <Icons>
-              <IoTrashOutline />
-              <AiOutlineEdit />
-            </Icons>
-          </PlaygroundCard>
-        </CardContainer>
-      </Folder>
+            <PlaygroundCard>
+              <LogoSmall src="logo-small.png" alt="" />
+              <CardContent>
+                <h5>Heap Implementation</h5>
+                <p>Language: java</p>
+              </CardContent>
+              <Icons>
+                <IoTrashOutline />
+                <AiOutlineEdit />
+              </Icons>
+            </PlaygroundCard>
+          </CardContainer>
+        </Folder>
+      ))}
     </StyledRightPane>
   );
 }
