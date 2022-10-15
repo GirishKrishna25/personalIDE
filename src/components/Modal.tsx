@@ -38,24 +38,38 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export default function Modal() {
-  const ModalFeatures = useContext(ModalContext);
-  // const isOpen = ModalFeatures?.isOpen;
-  const setIsOpen = ModalFeatures?.setIsOpen;
+const EditCardModal = ({ setIsOpen }: { setIsOpen: any }) => {
+  return (
+    <>
+      <Header>
+        <h2 className="Heading">Edit Card Title</h2>
+        <CloseButton
+          onClick={() => {
+            setIsOpen({
+              value: false,
+              type: "",
+              identifier: {
+                folderId: "",
+                cardId: ""
+              }
+            });
+          }}
+        >
+          <GrFormClose />
+        </CloseButton>
+      </Header>
+    </>
+  );
+};
 
+export default function Modal() {
+  const ModalFeatures = useContext(ModalContext)!;
+  const setIsOpen = ModalFeatures.setIsOpen;
+  const isOpen = ModalFeatures.isOpen;
   return (
     <ModalContainer>
       <ModalContent>
-        <Header>
-          <h2 className="Heading">Update Folder Name</h2>
-          <CloseButton
-            onClick={() => {
-              if (setIsOpen) setIsOpen(false);
-            }}
-          >
-            <GrFormClose />
-          </CloseButton>
-        </Header>
+        {isOpen.type === "1" && <EditCardModal setIsOpen={setIsOpen} />}
       </ModalContent>
     </ModalContainer>
   );

@@ -121,11 +121,11 @@ export default function RightPane() {
           language: "java"
         },
         ["item2"]: {
-          title: "stack implementation",
+          title: "heap implementation",
           language: "java"
         },
         ["item3"]: {
-          title: "stack implementation",
+          title: "queue implementation",
           language: "java"
         }
       }
@@ -134,15 +134,15 @@ export default function RightPane() {
       title: "Folder Title 2",
       items: {
         ["item4"]: {
-          title: "stack implementation",
+          title: "array implementation",
           language: "java"
         },
         ["item5"]: {
-          title: "stack implementation",
+          title: "string implementation",
           language: "java"
         },
         ["item6"]: {
-          title: "stack implementation",
+          title: "linkedList implementation",
           language: "java"
         }
       }
@@ -170,45 +170,30 @@ export default function RightPane() {
           </Header>
 
           <CardContainer>
-            <PlaygroundCard>
-              <LogoSmall src="/logo-small.png" alt="" />
-              <CardContent>
-                <h5>Stack Implementation</h5>
-                <p>Language: java</p>
-              </CardContent>
-              <Icons>
-                <IoTrashOutline />
-                <AiOutlineEdit
-                  onClick={() => {
-                    if (setIsOpen) setIsOpen(true);
-                  }}
-                />
-              </Icons>
-            </PlaygroundCard>
-
-            <PlaygroundCard>
-              <LogoSmall src="logo-small.png" alt="" />
-              <CardContent>
-                <h5>Queue Implementation</h5>
-                <p>Language: java</p>
-              </CardContent>
-              <Icons>
-                <IoTrashOutline />
-                <AiOutlineEdit />
-              </Icons>
-            </PlaygroundCard>
-
-            <PlaygroundCard>
-              <LogoSmall src="logo-small.png" alt="" />
-              <CardContent>
-                <h5>Heap Implementation</h5>
-                <p>Language: java</p>
-              </CardContent>
-              <Icons>
-                <IoTrashOutline />
-                <AiOutlineEdit />
-              </Icons>
-            </PlaygroundCard>
+            {Object.entries(folder.items).map(([cardId, card]) => (
+              <PlaygroundCard>
+                <LogoSmall src="/logo-small.png" alt="" />
+                <CardContent>
+                  <h5>{card.title}</h5>
+                  <p>Language: {card.language}</p>
+                </CardContent>
+                <Icons>
+                  <IoTrashOutline />
+                  <AiOutlineEdit
+                    onClick={() => {
+                      setIsOpen({
+                        value: true,
+                        type: "1",
+                        identifier: {
+                          folderId: folderId,
+                          cardId: cardId
+                        }
+                      });
+                    }}
+                  />
+                </Icons>
+              </PlaygroundCard>
+            ))}
           </CardContainer>
         </Folder>
       ))}
