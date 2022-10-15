@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { GrFormClose } from "react-icons/gr";
 import { ModalContext } from "../context/ModalContext";
+import { PlaygroundContext } from "../context/PlaygroundContext";
 
 const ModalContainer = styled.div`
   background: rgba(0, 0, 0, 0.4);
@@ -38,7 +39,39 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-const EditCardModal = ({ setIsOpen }: { setIsOpen: any }) => {
+const Input = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  gap: 2rem;
+  padding-bottom: 0;
+
+  input {
+    flex-grow: 1;
+    height: 2rem;
+  }
+
+  button {
+    background: #241f21;
+    height: 2rem;
+    color: white;
+    padding: 0 2rem;
+  }
+`;
+
+const EditCardModal = ({
+  setIsOpen,
+  isOpen
+}: {
+  setIsOpen: any;
+  isOpen: any;
+}) => {
+  const PlaygroundFeatures = useContext(PlaygroundContext)!;
+  const folders = PlaygroundFeatures.folders;
+  const currentCard =
+    folders[isOpen.identifier.folderId][isOpen.identifier.cardId];
+
   return (
     <>
       <Header>
@@ -58,6 +91,10 @@ const EditCardModal = ({ setIsOpen }: { setIsOpen: any }) => {
           <GrFormClose />
         </CloseButton>
       </Header>
+      <Input>
+        <input type="text" value={currentCard.title} />
+        <button>Update title</button>
+      </Input>
     </>
   );
 };
@@ -69,7 +106,9 @@ export default function Modal() {
   return (
     <ModalContainer>
       <ModalContent>
-        {isOpen.type === "1" && <EditCardModal setIsOpen={setIsOpen} />}
+        {isOpen.type === "1" && (
+          <EditCardModal setIsOpen={setIsOpen} isOpen={isOpen} />
+        )}
       </ModalContent>
     </ModalContainer>
   );
