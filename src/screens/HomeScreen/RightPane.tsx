@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 interface HeadingProps {
-  readonly vairant: string;
+  readonly size: string;
 }
 
 const StyledRightPane = styled.div`
@@ -42,7 +42,7 @@ const Header = styled.div<HeaderProps>`
 
 const Heading = styled.h3<HeadingProps>`
   font-weight: 400;
-  font-size: ${(props) => (props.variant === "large" ? "1.8rem" : "1.5rem")};
+  font-size: ${(props) => (props.size === "large" ? "1.8rem" : "1.5rem")};
   span {
     font-weight: 700;
   }
@@ -109,68 +109,34 @@ const Icons = styled.div`
 
 export default function RightPane() {
   const makeAvailableGlobally = useContext(ModalContext);
-  const setIsOpen = makeAvailableGlobally?.setIsOpen;
+  const { openModal } = makeAvailableGlobally;
 
-  // rough structure
-  const Folders = {
-    ["1"]: {
-      title: "Folder Title 1",
-      items: {
-        ["item1"]: {
-          title: "stack implementation",
-          language: "java"
-        },
-        ["item2"]: {
-          title: "heap implementation",
-          language: "java"
-        },
-        ["item3"]: {
-          title: "queue implementation",
-          language: "java"
-        }
-      }
-    },
-    ["2"]: {
-      title: "Folder Title 2",
-      items: {
-        ["item4"]: {
-          title: "array implementation",
-          language: "java"
-        },
-        ["item5"]: {
-          title: "string implementation",
-          language: "java"
-        },
-        ["item6"]: {
-          title: "linkedList implementation",
-          language: "java"
-        }
-      }
-    }
-  };
+  // use global floder structure
+  const PlaygroundFeatures = useContext(PlaygroundContext)!;
+  const Folders = PlaygroundFeatures.folders;
 
   return (
     <StyledRightPane>
       <Header variant="main">
-        <Heading variant="large">
+        <Heading size="large">
           My <span>Playground</span>
         </Heading>
-        <AddButton>
+        <AddButton>f
           <span>+</span> New Folder
         </AddButton>
       </Header>
 
-      {Object.entries(Folders).map(([folderId, folder]) => (
+      {Object.entries(Folders).map(([folderId, folder]: [folderId: string, folder: any]) => (
         <Folder>
           <Header variant="small">
-            <Heading vairant="small">{folder.title}</Heading>
+            <Heading size="small">{folder.title}</Heading>
             <AddButton>
               <span>+</span> New ground
             </AddButton>
           </Header>
 
           <CardContainer>
-            {Object.entries(folder.items).map(([cardId, card]) => (
+            {Object.entries(folder.items).map(([cardId, card]: [cardId: string, card: any]) => (
               <PlaygroundCard>
                 <LogoSmall src="/logo-small.png" alt="" />
                 <CardContent>
@@ -181,13 +147,13 @@ export default function RightPane() {
                   <IoTrashOutline />
                   <AiOutlineEdit
                     onClick={() => {
-                      setIsOpen({
+                      openModal({
                         value: true,
                         type: "1",
                         identifier: {
                           folderId: folderId,
-                          cardId: cardId
-                        }
+                          cardId: cardId,
+                        },
                       });
                     }}
                   />
