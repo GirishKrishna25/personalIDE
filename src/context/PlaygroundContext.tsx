@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import { v4 as uuid } from "uuid";
 
 interface PlaygroundContextType {
   folders: any;
@@ -11,45 +12,46 @@ export const PlaygroundContext = createContext<PlaygroundContextType | null>(
 
 export default function PlaygroundProvider({ children }: { children: any }) {
   const [folders, setFolders] = useState({
-    ["1"]: {
+    [uuid()]: {
       title: "Folder Title 1",
       items: {
-        ["item1"]: {
+        [uuid()]: {
           title: "stack implementation",
-          language: "java"
+          language: "java",
         },
-        ["item2"]: {
+        [uuid()]: {
           title: "heap implementation",
-          language: "java"
+          language: "java",
         },
-        ["item3"]: {
+        [uuid()]: {
           title: "queue implementation",
-          language: "java"
-        }
-      }
+          language: "java",
+        },
+      },
     },
-    ["2"]: {
+    [uuid()]: {
       title: "Folder Title 2",
       items: {
-        ["item4"]: {
+        [uuid()]: {
           title: "array implementation",
-          language: "java"
+          language: "java",
         },
-        ["item5"]: {
+        [uuid()]: {
           title: "string implementation",
-          language: "java"
+          language: "java",
         },
-        ["item6"]: {
+        [uuid()]: {
           title: "linkedList implementation",
-          language: "java"
-        }
-      }
-    }
+          language: "java",
+        },
+      },
+    },
   });
 
+npm install --save @types/styled-components
   const makeAvailableGlobally: PlaygroundContextType = {
     folders: folders,
-    setFolders: setFolders
+    setFolders: setFolders,
   };
 
   return (
