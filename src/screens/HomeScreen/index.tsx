@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import LeftPane from "./LeftPane";
 import RightPane from "./RightPane";
 import styled from "styled-components";
@@ -11,7 +11,7 @@ const HomeScreenContainer = styled.div`
   height: 100vh;
 `;
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   const ModalFeatures = useContext(ModalContext)!;
   const isOpen = ModalFeatures.isOpen;
 
@@ -22,4 +22,6 @@ export default function HomeScreen() {
       {isOpen.value === true ? <Modal /> : <></>}
     </HomeScreenContainer>
   );
-}
+};
+
+export default HomeScreen;
