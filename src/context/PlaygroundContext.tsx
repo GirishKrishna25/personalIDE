@@ -10,6 +10,20 @@ export const PlaygroundContext = createContext<PlaygroundContextType | null>(
   null
 );
 
+export interface FolderT {
+  title: string;
+  items: {
+    [key: string]: {
+      title: string;
+      language: string;
+    };
+  };
+}
+
+export interface folderType {
+  [key: string]: FolderT;
+}
+
 export default function PlaygroundProvider({ children }: { children: any }) {
   const [folders, setFolders] = useState({
     [uuid()]: {
@@ -48,7 +62,6 @@ export default function PlaygroundProvider({ children }: { children: any }) {
     },
   });
 
-npm install --save @types/styled-components
   const makeAvailableGlobally: PlaygroundContextType = {
     folders: folders,
     setFolders: setFolders,
