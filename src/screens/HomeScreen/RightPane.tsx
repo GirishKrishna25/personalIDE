@@ -121,48 +121,52 @@ export default function RightPane() {
         <Heading size="large">
           My <span>Playground</span>
         </Heading>
-        <AddButton>f
-          <span>+</span> New Folder
+        <AddButton>
+          f<span>+</span> New Folder
         </AddButton>
       </Header>
 
-      {Object.entries(Folders).map(([folderId, folder]: [folderId: string, folder: any]) => (
-        <Folder>
-          <Header variant="small">
-            <Heading size="small">{folder.title}</Heading>
-            <AddButton>
-              <span>+</span> New ground
-            </AddButton>
-          </Header>
+      {Object.entries(Folders).map(
+        ([folderId, folder]: [folderId: string, folder: any]) => (
+          <Folder>
+            <Header variant="small">
+              <Heading size="small">{folder.title}</Heading>
+              <AddButton>
+                <span>+</span> New ground
+              </AddButton>
+            </Header>
 
-          <CardContainer>
-            {Object.entries(folder.items).map(([cardId, card]: [cardId: string, card: any]) => (
-              <PlaygroundCard>
-                <LogoSmall src="/logo-small.png" alt="" />
-                <CardContent>
-                  <h5>{card.title}</h5>
-                  <p>Language: {card.language}</p>
-                </CardContent>
-                <Icons>
-                  <IoTrashOutline />
-                  <AiOutlineEdit
-                    onClick={() => {
-                      openModal({
-                        value: true,
-                        type: "1",
-                        identifier: {
-                          folderId: folderId,
-                          cardId: cardId,
-                        },
-                      });
-                    }}
-                  />
-                </Icons>
-              </PlaygroundCard>
-            ))}
-          </CardContainer>
-        </Folder>
-      ))}
+            <CardContainer>
+              {Object.entries(folder.items).map(
+                ([cardId, card]: [cardId: string, card: any]) => (
+                  <PlaygroundCard>
+                    <LogoSmall src="/logo-small.png" alt="" />
+                    <CardContent>
+                      <h5>{card.title}</h5>
+                      <p>Language: {card.language}</p>
+                    </CardContent>
+                    <Icons>
+                      <IoTrashOutline />
+                      <AiOutlineEdit
+                        onClick={() => {
+                          openModal({
+                            value: true,
+                            type: "1",
+                            identifier: {
+                              folderId: folderId,
+                              cardId: cardId,
+                            },
+                          });
+                        }}
+                      />
+                    </Icons>
+                  </PlaygroundCard>
+                )
+              )}
+            </CardContainer>
+          </Folder>
+        )
+      )}
     </StyledRightPane>
   );
 }
