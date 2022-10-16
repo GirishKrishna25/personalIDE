@@ -1,10 +1,10 @@
 import React from "react";
-import GlobalStyles from "./styles/global";
-import HomeScreen from "./screens/HomeScreen";
 import ModalProvider from "./context/ModalContext";
 import PlaygroundProvider from "./context/PlaygroundContext";
+import HomeScreen from "./screens/HomeScreen";
+import GlobalStyles from "./styles/global";
 
-export default function App() {
+function App() {
   return (
     <PlaygroundProvider>
       <ModalProvider>
@@ -14,3 +14,5 @@ export default function App() {
     </PlaygroundProvider>
   );
 }
+
+export default App;

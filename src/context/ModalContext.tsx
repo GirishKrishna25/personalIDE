@@ -1,10 +1,10 @@
-import { useState, createContext } from "react";
+import { createContext, useState } from "react";
 
 interface PopupFields {
   value: boolean; // if popup open or not
-  type: string; // which type of popup it is
-  identifier: {
-    folderId: string; // the folder which is seclected
+  type: string; // which type of popup is it
+  identifer: {
+    folderId: string; // the folder which is selected
     cardId: string; // the card which is selected
   };
 }
@@ -21,7 +21,7 @@ export default function ModalProvider({ children }: { children: any }) {
   const initialPopupFields: PopupFields = {
     value: false,
     type: "",
-    identifier: {
+    identifer: {
       folderId: "",
       cardId: "",
     },
