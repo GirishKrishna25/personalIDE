@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import LeftPane from "./LeftPane";
 import RightPane from "./RightPane";
 import styled from "styled-components";
